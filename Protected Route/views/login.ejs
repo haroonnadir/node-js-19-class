@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <!-- POST form to /login -->
+    <form action="/login" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="useremail" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="userpassword" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p class="text">
+            Don't have an account? <a href="/register">Register</a>
+        </p>
+    </form>
+        <!-- Display error message if exists -->
+    <% if (typeof error !== "undefined") { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+
+</div>
+
+</body>
+</html>
